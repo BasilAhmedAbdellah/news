@@ -4,6 +4,7 @@ import 'package:news/ui/homeScreen/categories/CategoriesFragment.dart';
 import 'package:news/ui/homeScreen/categories/Category.dart';
 import 'package:news/ui/homeScreen/categoryDetails/CategoryDetails.dart';
 import 'package:news/ui/homeScreen/settings/SettingsFragment.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         drawer: HomeDrawer(onMenuItemClick),
         appBar: AppBar(
-          title: Text("News App"),
+          title: Text(AppLocalizations.of(context)!.news_app),
         ),
         body: selectedWidget,
       ),
