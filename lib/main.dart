@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:news/provider/SettingsProvider.dart';
 import 'package:news/ui/homeScreen/HomeScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: (buildContext) => SettingsProvider(),child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       title: 'News',
       theme: ThemeData(
@@ -42,7 +47,17 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName:(buildContext)=>HomeScreen(),
       },
       initialRoute: HomeScreen.routeName,
-
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar')
+      ],
+      locale: Locale(settingsProvider.currentLocale),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 class Category{
   String id;
   String title;
