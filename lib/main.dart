@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:news/SplashScreen.dart';
 import 'package:news/provider/SettingsProvider.dart';
 import 'package:news/ui/homeScreen/HomeScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -45,8 +46,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         HomeScreen.routeName:(buildContext)=>HomeScreen(),
+        SplashScreen.routeName:(buildContext)=>SplashScreen()
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
