@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/model/News.dart';
+import 'package:news/model/newsResponse/news.dart';
+
 
 class NewsWidget extends StatelessWidget {
   News news;
@@ -14,18 +15,18 @@ class NewsWidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(18),
-            child: Image.asset(news.Image,
+            child: Image.network(news.urlToImage??"",
             height: 220,
               width: double.infinity,
               fit: BoxFit.fill,
             ),
           ),
-          Text(news.author,
+          Text(news.author??'',
           textAlign: TextAlign.start,
           ),
-          Text(news.title,
+          Text(news.title??'',
             textAlign: TextAlign.start,),
-          Text(news.date,
+          Text(news.publishedAt??'',
             textAlign: TextAlign.end)
         ],
       ),
