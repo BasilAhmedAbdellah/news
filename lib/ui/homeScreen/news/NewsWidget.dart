@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/model/newsResponse/news.dart';
 
@@ -15,11 +16,16 @@ class NewsWidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(18),
-            child: Image.network(news.urlToImage??"",
-            height: 220,
+            child: CachedNetworkImage(
+              imageUrl: news.urlToImage??"",
+              height: 220,
               width: double.infinity,
               fit: BoxFit.fill,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
+
           ),
           Text(news.author??'',
           textAlign: TextAlign.start,
