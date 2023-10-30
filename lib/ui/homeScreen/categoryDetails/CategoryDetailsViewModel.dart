@@ -9,9 +9,11 @@ class CategoryDetailsViewModel extends ChangeNotifier{
 
   void getSources(String categoryId)async{
     showLoading = true;
+    newsSourcesList=null;
+    errorMessage=null;
     notifyListeners();
-   var response = await ApiManger.getSources(categoryId);
     try {
+      var response = await ApiManger.getSources(categoryId);
       showLoading = null;
       if(response.status=='error'){
         errorMessage = response.message;
