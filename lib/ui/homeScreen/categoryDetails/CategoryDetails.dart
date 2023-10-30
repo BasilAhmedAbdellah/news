@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 class CategoryDetails extends StatefulWidget {
   Category category;
    CategoryDetails(this.category,{super.key});
+   var viewModel = CategoryDetailsViewModel();
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
@@ -34,7 +35,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
               children: [
                 Text( viewModel.errorMessage ?? ""),
                 ElevatedButton(onPressed: (){
-                  Navigator.popAndPushNamed(context, HomeScreen.routeName);
+                  viewModel.getSources(widget.category.id);
                 }, child: Text("Try Again"))
               ],
             ),
@@ -69,3 +70,4 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
           }
         */
+
